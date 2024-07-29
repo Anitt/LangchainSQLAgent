@@ -3,6 +3,8 @@
 import gradio as gr
 from models.agent import LangchainAgent
 
+# function to accept the query input from gradio user interface
+
 def query_flask(user_input):
     try:
         agent = LangchainAgent()
