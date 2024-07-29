@@ -1,0 +1,14 @@
+name: Langchain_SQLAgent
+description: Deployed using Gradio Space SDK
+
+models:
+  - name: main
+    directory: .
+    file: app.py
+    init: app
+    command: python3 -m gradio-spaces serve
+    endpoint: main
+
+dependencies:
+  python:
+    - requirements.txt

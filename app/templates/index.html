@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HR Database</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Text to SQL HR DATABASE - Query in natural language</h1>
+        <form id="query-form" action="/query" method="post">
+            <textarea name="user_input" placeholder="Enter your query" rows="4" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="response-container" class="response-container"></div>
+    </div>
+
+    <script>
+        document.getElementById('query-form').addEventListener('submit', async function(event) {
+            event.preventDefault();  // Prevent default form submission
+
+            const formData = new FormData(this);  // Create FormData object from form
+            try {
+                const response = await fetch('/query', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                const result = await response.json();  // Parse JSON response
+
+                if (result.error) {
+                    document.getElementById('response-container').innerHTML = "<p>Error: " + result.error + "</p>";
+                } else {
+                    document.getElementById('response-container').innerHTML = "<p>" + result.response + "</p>";
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('response-container').innerHTML = "<p>Error: " + error.message + "</p>";
+            }
+        });
+    </script>
+</body>
+</html>
