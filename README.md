@@ -33,11 +33,9 @@ Rationale: Enhances language model responses by providing specific context, impr
 Rationale: Integrated with this application for testing , debugging and development of Text to SQL product. Using langsmith underhood implmentation and function's can be understood and debugged which helps 
 developers for testing and development of applications.
 
-# Architecutre 
+# Architecutre & Work Flow
 
-![image](https://github.com/user-attachments/assets/8d126b8e-705c-480a-ae03-d6ad389ebfcc)
-
-# Work Flow
+Please find below the architecture & workflow step by step ,
 
 ## User Interaction:
 
