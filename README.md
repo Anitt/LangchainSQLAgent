@@ -204,41 +204,53 @@ Have Used Sqlite DB for Demo purpose . HR Sample Database was loaded into SQlite
    
 2. ## Open your web browser and go to http://127.0.0.1:5000 to access the web application.
 
-## File Structure
-
-1.app.py: The Flask application file that handles API requests and serves the web application.
-
-2.Models/agent.py: This file contains the Langchain Agents used to interface between OpenAI and the SQL database.
-
-3.index.html: The main HTML file located in the templates directory, responsible for the user interface layout.
-
-4.routes.py: Defines the routes and logic for handling different API endpoints in the Flask application.
-
-5.database.db: The SQLite database file storing the movie reviews and labels.
-
-6.templates/: Directory containing additional HTML templates for the web interface.
-
-7.requirements.txt: List of required Python packages necessary to run the application.
-
-8.Gradio_interface.py : Front end for the web application.
-
-
-## Screenshots
-
-![image](https://github.com/Anitt/LangChainDatabaseAgent/assets/32222717/b6a2655f-66ff-410f-9079-ed7c85243441)
-
-
-![image](https://github.com/Anitt/LangChainDatabaseAgent/assets/32222717/f0a87868-be99-4194-a933-029148b553c5)
-
-# Gradio Interface Screenshots
-
-![image](https://github.com/Anitt/LangChainDatabaseAgent/assets/32222717/401e55ca-a23d-403b-a618-e958be33b0f2)
-
-
-![image](https://github.com/Anitt/LangChainDatabaseAgent/assets/32222717/03d868b6-45b9-4bbf-8e40-ddeac8ef58f4)
 
 
 
+# ResultScreenshots
+
+1. Input Query - Describe the database ?
+   
+![image](https://github.com/user-attachments/assets/cbf00529-ece6-4ccf-8ffb-509bab8d0ff3)
+
+2. Input Query - Count the total number of records in all the tables ?
+
+ ![image](https://github.com/user-attachments/assets/ea770760-843a-4f9f-aec3-17a78d8bf1b6)
+
+3. List the department name of the employee with highest salary ?
+
+   Note that the LLM correctly identifies the two tables Employee and department and generates a query understanding the relationship and generates the correct answer.
+
+   ![image](https://github.com/user-attachments/assets/b44bf102-553f-4e9c-adec-1cae524cee75)
+
+   Using Langsmith We can see the SQL query generated from Natural Lanaguage ,
+
+   SQL Agent Correctly identifies the tables needs to be used , below screenshot from Langsmith,
+
+   ![image](https://github.com/user-attachments/assets/f0a5b397-dbdc-43de-b33d-8f37f9a10cb5)
+
+   As we Can see below from the screenshot that LLM Generated the correct Query by Joining Depeartments and Employee table,
+
+   ![image](https://github.com/user-attachments/assets/ef0fa136-d3a7-4ce7-b90e-02eaccd8d038)
+
+5. Now let's do a 3 table join -  Output the city of the employee with highest salary ?
+
+![image](https://github.com/user-attachments/assets/4c947496-a6ea-4205-b048-6c88fc122ba8)
+
+
+Let's debug the Query generated using Langsmith,
+
+Note that LLM has successfully understood the intention of the user query and joined 3 tables to get the output, please find the screenshot from Langsmith below,
+
+![image](https://github.com/user-attachments/assets/db9df935-77e9-4704-a3d9-70277365fdc6)
+
+
+
+# Future Enchancements 
+
+1. Add more tables and evaluate the performance
+2. Add One shot and few shot examples to improve the performance of the model through Langchain Promp Templates.
+3. Experiment with LangGraph and evaluate the performance of the model.
 
 
    
