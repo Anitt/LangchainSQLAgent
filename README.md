@@ -1,99 +1,97 @@
-## LangChain Database Agent
+# LangChain SQL Agent
 
 This project is a web-based application that uses the Langchain RAG framework with OpenAI  and Langchain Agents to respond to natural language queries directed at an SQLite database. This TexttoSQL application leverages Flask and Gradio for the backend and provides an interactive interface for users.  This Application is integrated with Langsmith for testing , debugging and Development of Generative AI Applicatons.
 
-## Problem Addressed
+# Problem Addressed
 
 The SQL Agent in LangChain addresses the complex problem of bridging the gap between natural language and structured database querying, enabling Stakeholders/LeadershipTeam to interact with SQL databases without requiring technical expertise in SQL syntax, thereby making data access easy and enhancing decision-making capabilities.
 
-## Then GenAI Framework and tools used with rationale behind their selection
+# Then GenAI Framework and tools used with rationale behind their selection
 
-# OpenAI's GPT 3.5 Turbo:
+## OpenAI's GPT 3.5 Turbo:
 
 Rationale: Advanced language models for accurate natural language understanding and SQL query generation with good support and documenation for API usage.
 
-# LangChain Framework:
+## LangChain Framework:
 
 Rationale: Integrated environment for combining language models with data sources, facilitating natural language interaction with databases. Powerful Framework providing seamless integration with LLM with customization and flexibility. 
 
-# SQLDatabase Utility:
+## SQLDatabase Utility:
 
 Rationale: Facilitates seamless integration with SQL databases, including schema introspection and query execution.
 
-# Schema Introspection Tools(SQL Agent):
+## Schema Introspection Tools(SQL Agent):
 
 Rationale: Extracts metadata about tables, columns, and relationships to ensure accurate SQL query generation.
 
-# Custom Prompt Templates:
+## Custom Prompt Templates:
 
 Rationale: Enhances language model responses by providing specific context, improving the relevance and accuracy of generated SQL queries.
 
-# Langsmith:
+## Langsmith:
 
 Rationale: Integrated with this application for testing , debugging and development of Text to SQL product. Using langsmith underhood implmentation and function's can be understood and debugged which helps 
 developers for testing and development of applications.
 
-## Architecutre and Workflow 
+# Architecutre and Workflow  
 
-## Work Flow 
-
-# User Interaction:
+## User Interaction:
 
 The user inputs a natural language query through the Gradio interface (User UI).
 
-# Query Handling (Gradio):
+## Query Handling (Gradio):
 
 Gradio acts as the frontend interface, where user inputs are collected and sent to the Flask server.
 
-# Request Routing (Flask):
+## Request Routing (Flask):
 
 Flask, functioning as the backend server, receives the query from Gradio. It processes the request and forwards it to the LangChain SQL Agent.
 
-# Language Understanding (OpenAI GPT-3.5):
+## Language Understanding (OpenAI GPT-3.5):
 
 The LangChain SQL Agent uses OpenAI's GPT-3.5 model to understand and interpret the natural language query.
 
-# Schema Retrieval:
+## Schema Retrieval:
 
 The Schema Introspection Module within the LangChain SQL Agent retrieves necessary schema details from the SQL Database.
 
-# Prompt Customization:
+## Prompt Customization:
 
 The Prompt Template Module customizes the prompt for GPT-3.5 based on the schema and user query.
 
-# SQL Query Generation:
+## SQL Query Generation:
 
 The LangChain SQL Agent generates an SQL query using GPT-3.5 based on the customized prompt and schema information.
 
-# Execution and Data Retrieval:
+## Execution and Data Retrieval:
 
 The Query Execution Module executes the generated SQL query on the SQL Database and retrieves the results.
 
-# Result Formatting:
+## Result Formatting:
 
 Result Augmentation (Optional with RAG):
 
 If additional context or explanations are needed, the results might be reprocessed by GPT-3.5 using the retrieved information to provide a more detailed or natural language explanation.
 
-# Response Delivery:
+## Response Delivery:
 
 Flask sends the formatted results back to the Gradio interface.
 
-# User Feedback:
+## User Feedback:
 
 The user views the response through the Gradio interface.
 
-# Monitoring and Logging:
+## Monitoring and Logging:
 
 All interactions, including queries and responses, are logged using LangSmith.
 
-## RAG Integration Overview :
+# RAG Integration Overview :
 
-# Retrieval Component:
+## Retrieval Component:
 
 Retrieves relevant schema information, past queries, or contextual data to support accurate query generation.
 
-# Generation Component: 
+## Generation Component: 
 
 Uses GPT-3.5 to generate or refine SQL queries and optionally, format or contextualize results based on the retrieved information.
 
@@ -105,7 +103,7 @@ Have Used Sqlite DB for Demo purpose . HR Sample Database was loaded into SQlite
 
 # Key Chanllenges faced
 
-  # 1 .Initial Approach and Challenges:
+  ## 1 .Initial Approach and Challenges:
 
   Initially started the project using LangChain Chains to handle natural language queries and generate SQL queries. However, encountered significant challenges with this approach. LangChain Chains lacked explicit 
   functions to manage schema details and understand table relationships. This limitation made it difficult to handle complex database schemas and accurately generate SQL queries based on user inputs.
@@ -114,7 +112,7 @@ Have Used Sqlite DB for Demo purpose . HR Sample Database was loaded into SQlite
   and it worked properly, 
   this approach proved impractical for enterprise databases with hundreds of tables. The manual inclusion of schema details in prompts was cumbersome and not scalable for large-scale implementations.
 
- # Solution and Breakthrough:
+ ## Solution and Breakthrough:
 
   The introduction of LangChain Agents significantly addressed these issues. Unlike Chains, LangChain Agents are designed to automatically introspect the schema and understand the relationships between tables. This 
   capability allows the Agents to accurately identify user intent and determine which tables to query without requiring manual schema input.
@@ -122,21 +120,21 @@ Have Used Sqlite DB for Demo purpose . HR Sample Database was loaded into SQlite
   The use of LangChain Agents was a major breakthrough, as it streamlined the query generation process and provided a scalable solution for managing complex databases. This advancement improved the accuracy of query 
   generation and made the system more adaptable to large enterprise environments.
 
-# Summary
+## Summary
 
-# Schema Management and Query Generation:
+## Schema Management and Query Generation:
   
-  # Challenge: 
+  ## Challenge: 
      Initially, used LangChain Chains required manually providing schema details, which was impractical for large databases and complex queries.
-  # Solution: 
+  ## Solution: 
      LangChain Agents provided a significant improvement by automatically introspecting the schema, understanding table relationships, and accurately generating SQL queries based on user input.
 
-# 2 . Challenge with Testing and Evaluation:
+## 2 . Challenge with Testing and Evaluation:
 
   One significant challenge we faced was testing and debugging the application effectively. It was crucial to understand the internal processes and decisions made by the system once a user's input query was passed to the 
   language model (LLM). Without clear visibility into the underlying workings, it was difficult to identify issues and ensure the accuracy of query generation.
 
-  # Solution with Langsmith:
+  ## Solution with Langsmith:
 
   To address this challenge, we explored various tools and found that LangChain's Langsmith component provided the necessary capabilities for tracing and debugging. Langsmith allows us to track and visualize the internal 
   operations of the LangChain components, including the different calls made and the processing steps involved.
