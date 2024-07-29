@@ -142,7 +142,7 @@ Have Used Sqlite DB for Demo purpose . HR Sample Database was loaded into SQlite
   By integrating Langsmith into our system, we gained valuable insights into the LLM's interactions and the flow of data through the application. This enhanced visibility enabled us to effectively monitor and evaluate 
   the system's performance, identify and resolve issues, and ensure that the query generation process was functioning as intended.
 
-## Prerequisites
+# Prerequisites
 
 - Python 3.9 or higher
 - Flask
@@ -152,6 +152,28 @@ Have Used Sqlite DB for Demo purpose . HR Sample Database was loaded into SQlite
 - Gradio
 - Langsmith
   
+# File Structure
+
+1.app.py: The Flask application file that handles API requests and serves the web application.
+
+2.Models/agent.py: This file contains the Langchain Agents used to interface between OpenAI and the SQL database.
+
+3.index.html: The main HTML file located in the templates directory, responsible for the user interface layout.
+
+4.routes.py: Defines the routes and logic for handling different API endpoints in the Flask application.
+
+5.database.db: The SQLite database file storing the movie reviews and labels.
+
+6.templates/: Directory containing additional HTML templates for the web interface.
+
+7.requirements.txt: List of required Python packages necessary to run the application.
+
+8.Gradio_interface.py : Front end for the web application.
+
+9.Database/create_database.py :  Create script for creating a HR database in Sqlite.
+
+10.Database/insert.py : script for populating values in the created tables.
+
 
 ## Installation
 
